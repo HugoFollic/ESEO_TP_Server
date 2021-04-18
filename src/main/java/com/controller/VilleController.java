@@ -23,7 +23,6 @@ public class VilleController {
 	@RequestMapping(value = "/ville_france", method = RequestMethod.GET)
 	@ResponseBody
 	public ArrayList<Ville> appelGet(@RequestParam(required = false, value = "codePostal") String codePostal) {
-		System.out.println("Appel GET");
 		return villeBLOService.getInfoVille(codePostal);
 		
 	}
@@ -32,7 +31,6 @@ public class VilleController {
 	@RequestMapping(value = "/ville_france", method = RequestMethod.POST)
 	@ResponseBody
 	public void appelPost(@RequestBody(required = true) Ville ville){
-		System.out.println("Appel POST");
 		villeBLOService.postNouvelleVille(ville);
 		
 	}
@@ -41,7 +39,6 @@ public class VilleController {
 	@RequestMapping(value = "/ville_france", method = RequestMethod.PUT)
 	@ResponseBody
 	public void appelPut(@RequestBody(required = true) Ville ville, @RequestParam(required = true, value = "insee") String insee) {
-		System.out.println("Appel PUT");
 		villeBLOService.putVille(insee, ville);
 	}
 	
@@ -49,7 +46,6 @@ public class VilleController {
 		@RequestMapping(value = "/ville_france", method = RequestMethod.DELETE)
 		@ResponseBody
 		public void appelDelete(@RequestParam(required = true, value = "insee") String insee) {
-			System.out.println("Appel DELETE");
 			villeBLOService.deleteVille(insee);
 		}
 }

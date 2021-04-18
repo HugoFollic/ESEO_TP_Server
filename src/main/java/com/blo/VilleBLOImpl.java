@@ -19,7 +19,7 @@ public class VilleBLOImpl implements VilleBLO{
 	public ArrayList<Ville> getInfoVille(String monParam){
 		
 		ArrayList<Ville> listeVille = null;
-		if(monParam == null || monParam == "") {
+		if(monParam == null || monParam.equals("")) {
 			
 			listeVille = villeDAO.findAllVilles();
 
