@@ -19,15 +19,33 @@ public class VilleBLOImpl implements VilleBLO{
 	public ArrayList<Ville> getInfoVille(String monParam){
 		
 		ArrayList<Ville> listeVille = null;
-		if(monParam == "") {
+		if(monParam == null || monParam == "") {
+			
 			listeVille = villeDAO.findAllVilles();
 
 		}else {
-			//listeVille = villeDAO.findVillesWithParam();
+			
+			listeVille = villeDAO.getVilleByCodePostal(monParam);
 
 		}
 		
 		return listeVille;
+	}
+	
+	public void postNouvelleVille(Ville paramVille) {
+		villeDAO.setNouvelleVille(paramVille);
+		
+	}
+
+	
+	public void putVille(String insee, Ville paramVille) {
+		villeDAO.setModificationVille(insee, paramVille);
+		
+	}
+	
+	public void deleteVille(String insee) {
+		villeDAO.supprimerVille(insee);
+		
 	}
 
 }

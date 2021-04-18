@@ -3,6 +3,7 @@ package com.controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,10 +20,36 @@ public class VilleController {
 	VilleBLO villeBLOService;
 
 	// Méthode GET
-	@RequestMapping(value = "/ville", method = RequestMethod.GET)
+	@RequestMapping(value = "/ville_france", method = RequestMethod.GET)
 	@ResponseBody
 	public ArrayList<Ville> appelGet(@RequestParam(required = false, value = "codePostal") String codePostal) {
 		System.out.println("Appel GET");
 		return villeBLOService.getInfoVille(codePostal);
+		
 	}
+	
+	// Méthode POST
+	@RequestMapping(value = "/ville_france", method = RequestMethod.POST)
+	@ResponseBody
+	public void appelPost(@RequestBody(required = true) Ville ville){
+		System.out.println("Appel POST");
+		villeBLOService.postNouvelleVille(ville);
+		
+	}
+	
+	// Méthode PUT
+	@RequestMapping(value = "/ville_france", method = RequestMethod.PUT)
+	@ResponseBody
+	public void appelPut(@RequestBody(required = true) Ville ville, @RequestParam(required = true, value = "insee") String insee) {
+		System.out.println("Appel PUT");
+		villeBLOService.putVille(insee, ville);
+	}
+	
+	// Méthode DELETE
+		@RequestMapping(value = "/ville_france", method = RequestMethod.DELETE)
+		@ResponseBody
+		public void appelDelete(@RequestParam(required = true, value = "insee") String insee) {
+			System.out.println("Appel DELETE");
+			villeBLOService.deleteVille(insee);
+		}
 }

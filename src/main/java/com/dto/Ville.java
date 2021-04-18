@@ -17,6 +17,10 @@ public class Ville {
 		this.latitude = lat;
 		this.longitude = longi;
 	}
+	
+	public Ville(){
+		
+	}
 
 	public String getInsee() {
 		return insee;

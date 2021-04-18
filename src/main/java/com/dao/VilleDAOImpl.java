@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 import org.springframework.stereotype.Service;
 
 import com.config.JDBCConfiguration;
@@ -27,6 +26,7 @@ public class VilleDAOImpl implements VilleDAO {
 				liste.add(ville);
 			}
 			return liste;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -63,5 +63,60 @@ public class VilleDAOImpl implements VilleDAO {
 		}
 		return null;
 	}
+	
+	public void setNouvelleVille(Ville ville) {
+		Connection con = new JDBCConfiguration().getCo();
+		try {
+			Statement st = con.createStatement();
+			st.executeUpdate("INSERT INTO `ville_france` (`Code_commune_INSEE`, `Nom_commune`, `Code_postal`,"
+					+ " `Libelle_acheminement`, `Ligne_5`, `Latitude`, `Longitude`) VALUES ('" + ville.getInsee() + "', '" + ville.getNom() 
+					+ "', '" + ville.getCodePostal() + "', '" + ville.getNom() + "', '', '" + ville.getLatitude() 
+					+ "', '" + ville.getLongitude() + "');");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void setModificationVille(String insee, Ville ville) {
+		Connection con = new JDBCConfiguration().getCo();
+		try {
+			Statement st = con.createStatement();
+			st.executeUpdate("UPDATE `ville_france` SET `Code_commune_INSEE` = '" + ville.getInsee() 
+			+ "', `Nom_commune` = '" + ville.getNom() + "', `Code_postal` = '" + ville.getCodePostal() 
+			+ "', `Libelle_acheminement` = '" + ville.getNom() + "', `Ligne_5` = '', `Latitude` = '" 
+			+ ville.getLatitude() + "', `Longitude` = '" + ville.getLongitude() + "' WHERE `Code_commune_INSEE` = " + insee + ";");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void supprimerVille(String insee) {
+		Connection con = new JDBCConfiguration().getCo();
+		try {
+			Statement st = con.createStatement();
+			st.executeUpdate("DELETE FROM `ville_france` WHERE `Code_commune_INSEE` = " + insee + ";");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 
 }

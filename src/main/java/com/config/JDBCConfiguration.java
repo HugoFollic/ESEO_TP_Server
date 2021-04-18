@@ -15,7 +15,7 @@ public class JDBCConfiguration {
 			e.printStackTrace();
 		}
 		try {
-			this.co = DriverManager.getConnection("jdbc:mysql://localhost/Projet_Maven?user=root&password=Y2s7P73d");
+			this.co = DriverManager.getConnection("jdbc:mysql://localhost/maven?user=root&password=");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
