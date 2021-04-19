@@ -6,14 +6,16 @@ public class Ville {
 	private String nom;
 	private String codePostal;
 	private String libelle;
+	private String ligne5;
 	private String latitude;
 	private String longitude;
 
-	public Ville(String insee, String nom, String code, String libelle, String lat, String longi) {
+	public Ville(String insee, String nom, String code, String libelle, String ligne5, String lat, String longi) {
 		this.insee = insee;
 		this.nom = nom;
 		this.codePostal = code;
 		this.libelle = libelle;
+		this.ligne5 = ligne5;
 		this.latitude = lat;
 		this.longitude = longi;
 	}
@@ -52,6 +54,14 @@ public class Ville {
 
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
+	}
+	
+	public String getLigne5() {
+		return ligne5;
+	}
+
+	public void setLigne5(String ligne5) {
+		this.ligne5 = ligne5;
 	}
 
 	public String getLatitude() {

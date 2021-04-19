@@ -22,8 +22,8 @@ public class VilleController {
 	// Méthode GET
 	@RequestMapping(value = "/ville_france", method = RequestMethod.GET)
 	@ResponseBody
-	public ArrayList<Ville> appelGet(@RequestParam(required = false, value = "codePostal") String codePostal) {
-		return villeBLOService.getInfoVille(codePostal);
+	public ArrayList<Ville> appelGet(@RequestParam(required = false, value = "insee") String insee) {
+		return villeBLOService.getInfoVille(insee);
 		
 	}
 	

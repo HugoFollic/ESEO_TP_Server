@@ -25,7 +25,7 @@ public class VilleBLOImpl implements VilleBLO{
 
 		}else {
 			
-			listeVille = villeDAO.getVilleByCodePostal(monParam);
+			listeVille = villeDAO.getVilleByInsee(monParam);
 
 		}
 		
